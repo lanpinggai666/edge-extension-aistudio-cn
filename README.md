@@ -15,7 +15,7 @@
 
 1.  **下载代码**：
     *   点击本页面右上角的 `Code` -> `Download ZIP` 下载并解压。
-    *   或者使用 Git 克隆：`git clone https://github.com/YOUR_USERNAME/edge-extension-aistudio-cn.git`
+    *   或者使用 Git 克隆：`git clone https://github.com/shaonaiyan/edge-extension-aistudio-cn.git`
 2.  **打开扩展管理**：
     *   **Edge 浏览器**：地址栏输入 `edge://extensions/`
     *   **Chrome 浏览器**：地址栏输入 `chrome://extensions/`
