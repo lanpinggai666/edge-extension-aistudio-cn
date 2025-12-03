@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Google AI Studio 中文助手",
+  "version": "1.0",
+  "description": "将 Google AI Studio 界面汉化，保持对话内容不变。",
+  "content_scripts": [
+    {
+      "matches": ["https://aistudio.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
