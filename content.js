@@ -503,6 +503,11 @@ function translateText(text) {
     // 1. 优先精确匹配
     if (i18n[trimmed]) return i18n[trimmed];
 
+    // 1.1 尝试标准化匹配 (去除多余换行符和空格)
+    // 解决 tooltip 中因为自动换行导致无法匹配字典的问题
+    const normalized = trimmed.replace(/\s+/g, ' ');
+    if (i18n[normalized]) return i18n[normalized];
+
     // 2. 处理部分包含的情况
     if (trimmed.startsWith("Knowledge cut off:")) {
         return trimmed.replace("Knowledge cut off:", "知识截止:");
@@ -567,6 +572,10 @@ function traverseAndTranslate(root) {
                 const text = node.nodeValue.trim();
                 if (text) {
                     if (i18n[text]) return NodeFilter.FILTER_ACCEPT;
+                    // 增加标准化后的检查
+                    const normalized = text.replace(/\s+/g, ' ');
+                    if (i18n[normalized]) return NodeFilter.FILTER_ACCEPT;
+
                     if (text.startsWith("Knowledge cut off:")) return NodeFilter.FILTER_ACCEPT;
                     if (text.startsWith("Points to ")) return NodeFilter.FILTER_ACCEPT;
                     if (text.includes("Input: $") && text.includes("Output: $")) return NodeFilter.FILTER_ACCEPT;
@@ -581,7 +590,9 @@ function traverseAndTranslate(root) {
     while (node = walker.nextNode()) {
         const translation = translateText(node.nodeValue);
         if (translation) {
-            node.nodeValue = node.nodeValue.replace(node.nodeValue.trim(), translation);
+            // 如果是标准化匹配，可能需要保留原有格式不太可能，直接替换
+            // 注意：这里我们简单地将整个节点值替换为翻译，这对于纯文本节点是安全的
+            node.nodeValue = translation;
         }
     }
 
