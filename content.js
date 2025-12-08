@@ -469,6 +469,16 @@ const i18n = {
     "Suggestions": "建议",
     "Publish your app": "发布您的应用",
     "Default to fullscreen": "默认为全屏",
+    
+    // V25 - 更多选项与历史记录
+    "Collapse prompts history": "折叠提示历史",
+    "More options": "更多选项",
+    "Lets you define functions that Gemini can call": "允许您定义 Gemini 可以调用的函数",
+    "This tool is not compatible with the current active tools.": "此工具与当前活动工具不兼容。",
+    "Get SDK code to generate an image": "获取生成图像的 SDK 代码",
+    "There is no billing currently set up for this project Gemini API.": "当前项目 Gemini API 未设置计费。",
+    "View all history": "查看所有历史",
+    "Get started": "开始使用",
 };
 
 // 需要排除的 CSS 选择器
